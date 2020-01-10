@@ -8,3 +8,6 @@ dotnet_diagnostic.CS8604.severity = error
 
 # CS8603: Possible null reference return.
 dotnet_diagnostic.CS8603.severity = error
+
+# CS8653: A default expression introduces a null value for a type parameter.
+dotnet_diagnostic.CS8653.severity = error

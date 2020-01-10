@@ -10,7 +10,7 @@ namespace queuepacked.ConsoleUI
     public class UiHub : IDisposable
     {
         private static UiHub? _instance;
-        
+
         private readonly ConsoleSettings _initialSettings;
 
         private readonly int _width;
@@ -24,7 +24,7 @@ namespace queuepacked.ConsoleUI
 
         private string _title;
         private View? _activeView;
-        
+
         private readonly InputCatcher _inputCatcher;
 
         /// <summary>
@@ -148,10 +148,14 @@ namespace queuepacked.ConsoleUI
             {
                 Thread.Sleep(15);
 
-                while (_inputCatcher.KeyPressed(out InputEventArgs inputEvent))
+                InputEventArgs inputEvent;
+                while (_inputCatcher.KeyPressed(out inputEvent))
                     ActiveView?.OnNewInput(inputEvent);
 
                 ActiveView?.DrawBuffer();
+
+                if (!inputEvent.ConsumedInput && inputEvent.KeyInfo.Key == ConsoleKey.C && inputEvent.KeyInfo.Modifiers == ConsoleModifiers.Control)
+                    Stop();
             }
         }
 

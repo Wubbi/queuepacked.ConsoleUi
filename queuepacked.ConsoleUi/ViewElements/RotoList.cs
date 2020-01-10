@@ -198,7 +198,10 @@ namespace queuepacked.ConsoleUI.ViewElements
 
         private void UpdatePattern()
         {
-            string[] generateTextPattern = TextElementHelper.GenerateTextPattern(this, CurrentElement?.Name ?? "");
+            if(_currentIndex<0)
+                return;
+
+            string[] generateTextPattern = TextElementHelper.GenerateTextPattern(this, CurrentElement.Name);
 
             Pattern.Builder builder = Pattern.Builder.New(Width, Height);
 
