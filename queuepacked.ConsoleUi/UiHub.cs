@@ -148,14 +148,15 @@ namespace queuepacked.ConsoleUI
             {
                 Thread.Sleep(15);
 
-                InputEventArgs inputEvent;
-                while (_inputCatcher.KeyPressed(out inputEvent))
+                while (_inputCatcher.KeyPressed(out InputEventArgs inputEvent))
+                {
                     ActiveView?.OnNewInput(inputEvent);
 
-                ActiveView?.DrawBuffer();
+                    if (!inputEvent.ConsumedInput && inputEvent.KeyInfo.Key == ConsoleKey.C && inputEvent.KeyInfo.Modifiers == ConsoleModifiers.Control)
+                        Stop();
+                }
 
-                if (!inputEvent.ConsumedInput && inputEvent.KeyInfo.Key == ConsoleKey.C && inputEvent.KeyInfo.Modifiers == ConsoleModifiers.Control)
-                    Stop();
+                ActiveView?.DrawBuffer();
             }
         }
 
