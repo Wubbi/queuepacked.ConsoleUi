@@ -108,7 +108,7 @@
         /// <param name="y"></param>
         /// <param name="text"></param>
         public Label(int x, int y, string text)
-            : this(x, y, text?.Length ?? 0, 1, text, AlignmentHorizontal.Left, AlignmentVertical.Top)
+            : this(x, y, text?.Length ?? 0, 1, text ?? "", AlignmentHorizontal.Left, AlignmentVertical.Top)
         {
         }
 
@@ -157,6 +157,7 @@
             _textAlignmentVertical = textAlignmentVertical;
             _wrapText = wrapText;
             _filler = ' ';
+            _pattern = Pattern.Builder.New(width, height).Create();
             UpdatePattern();
         }
 

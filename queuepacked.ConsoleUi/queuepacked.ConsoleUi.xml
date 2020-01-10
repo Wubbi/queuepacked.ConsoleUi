@@ -1,0 +1,867 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>queuepacked.ConsoleUi</name>
+    </assembly>
+    <members>
+        <member name="M:queuepacked.ConsoleUI.ConsoleSettings.#ctor">
+            <summary>
+            Create a new instance using the currently used settings in <see cref="T:System.Console"/>
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ConsoleSettings.Set">
+            <summary>
+            Writes the values of this instance to <see cref="T:System.Console"/>
+            </summary>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.ElementGroup">
+            <summary>
+            Arranges elements together
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementGroup.X">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.IElement.X"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementGroup.Y">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.IElement.Y"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementGroup.Width">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.IElement.Width"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementGroup.Height">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.IElement.Height"/>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ElementGroup.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ElementGroup"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ElementGroup.AddElement(queuepacked.ConsoleUI.IElement)">
+            <summary>
+            Adds an element to this group
+            </summary>
+            <param name="element"></param>
+            <returns>True if the element was added, false if it already was part of this group</returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ElementGroup.AddElements(queuepacked.ConsoleUI.IElement[])">
+            <summary>
+            Adds several elements to this group
+            </summary>
+            <param name="elements"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ElementGroup.RemoveElement(queuepacked.ConsoleUI.IElement)">
+            <summary>
+            Removes an element from this group
+            </summary>
+            <param name="element"></param>
+            <returns>True if the element was removed, false if it was not part of this group</returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ElementGroup.Reorder">
+            <summary>
+            Rearranges he contained elements
+            </summary>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.AlignmentHorizontal">
+            <summary>
+            How content is aligned horizontally
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.AlignmentHorizontal.Left">
+            <summary>
+            Left to right
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.AlignmentHorizontal.Middle">
+            <summary>
+            Centered
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.AlignmentHorizontal.Right">
+            <summary>
+            Right to left
+            </summary>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.AlignmentVertical">
+            <summary>
+            How content is aligned vertically
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.AlignmentVertical.Top">
+            <summary>
+            Top down
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.AlignmentVertical.Middle">
+            <summary>
+            Centered
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.AlignmentVertical.Bottom">
+            <summary>
+            Bottom up
+            </summary>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.Buffer">
+            <summary>
+            Stores the visuals to show in the console
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.Buffer.Invisible">
+            <summary>
+            The character used to mark a Symbol as transparent
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Buffer.Rect(System.Int32,System.Int32,System.Int32,System.Int32,queuepacked.ConsoleUI.Symbol)">
+            <summary>
+            Draws a rectangle to this <see cref="T:queuepacked.ConsoleUI.Buffer"/> using the given <see cref="T:queuepacked.ConsoleUI.Symbol"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="symbol"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Buffer.Pattern(System.Int32,System.Int32,queuepacked.ConsoleUI.Pattern)">
+            <summary>
+            Draws a <see cref="M:queuepacked.ConsoleUI.Buffer.Pattern(System.Int32,System.Int32,queuepacked.ConsoleUI.Pattern)"/> to this <see cref="T:queuepacked.ConsoleUI.Buffer"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="pattern"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Buffer.Symbols(System.Int32,System.Int32,queuepacked.ConsoleUI.Symbol[])">
+            <summary>
+            Draws a sequence of Symbols to this <see cref="T:queuepacked.ConsoleUI.Buffer"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="symbols"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Buffer.Clear(queuepacked.ConsoleUI.Symbol)">
+            <summary>
+            Fills the entire Buffer with the given Symbol
+            </summary>
+            <param name="filler"></param>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.Pattern">
+            <summary>
+            A collection of Symbols arranged in a rectangle
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.Pattern.Width">
+            <summary>
+            The Width of this pattern
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.Pattern.Height">
+            <summary>
+            The Height of this pattern
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.Pattern.Item(System.Int32,System.Int32)">
+            <summary>
+            Returns the <see cref="T:queuepacked.ConsoleUI.Symbol"/> at the given coordinates in this <see cref="T:queuepacked.ConsoleUI.Pattern"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Clone">
+            <summary>
+            Creates a depp copy of this <see cref="T:queuepacked.ConsoleUI.Pattern"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.Pattern.Builder">
+            <summary>
+            A helper class to create instances of <see cref="T:queuepacked.ConsoleUI.Pattern"/>
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.New(System.Int32,System.Int32)">
+            <summary>
+            Creates a new Builder
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.AddSymbols(System.Int32,System.Int32,queuepacked.ConsoleUI.Symbol[])">
+            <summary>
+            Write one or more Symbols in a row from left to right to this patterns starting at the given coordinates
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="symbols"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.AddText(System.Int32,System.Int32,System.String,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            Write a string with the given colors into this pattern
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="text"></param>
+            <param name="backgroundColor"></param>
+            <param name="foregroundColor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.Rect(System.Int32,System.Int32,System.Int32,System.Int32,queuepacked.ConsoleUI.Symbol)">
+            <summary>
+            Draws a full rect
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="filler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.Create">
+            <summary>
+            Creates a new <see cref="T:queuepacked.ConsoleUI.Pattern"/> using the current state of this <see cref="T:queuepacked.ConsoleUI.Pattern.Builder"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.Symbol">
+            <summary>
+            A single character to display in the console
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.Symbol.Character">
+            <summary>
+            The character to display
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.Symbol.BackgroundColor">
+            <summary>
+            The background color to use for this Symbol
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.Symbol.ForegroundColor">
+            <summary>
+            The foreground color to use for this Symbol
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Symbol.#ctor(System.Char,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            Creates a new Symbol using the given values
+            </summary>
+            <param name="character"></param>
+            <param name="backgroundColor"></param>
+            <param name="foregroundColor"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Symbol.Equals(queuepacked.ConsoleUI.Symbol@)">
+            <summary>
+            Compares this <see cref="T:queuepacked.ConsoleUI.Symbol"/> to another
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.IElement">
+            <summary>
+            Offers basic properties for arranging elements in a layout
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.IElement.X">
+            <summary>
+            Gets or sets the X coordinate of this element
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.IElement.Y">
+            <summary>
+            Gets or sets the Y coordinate of this element
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.IElement.Width">
+            <summary>
+            Gets or sets the Width of this element
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.IElement.Height">
+            <summary>
+            Gets or sets the Height of this element
+            </summary>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.ElementList">
+            <summary>
+            Arranges <see cref="T:queuepacked.ConsoleUI.IElement"/>s in a vertical or horizontal line
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementList.Horizontal">
+            <summary>
+            Whether elements are arranged horizontally (true) or vertically (false)
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementList.VerticalAlignment">
+            <summary>
+            Vertical alignment of elements. Ignored if <see cref="P:queuepacked.ConsoleUI.ElementList.Horizontal"/> is False
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementList.HorizontalAlignment">
+            <summary>
+            Horizontal alignment of elements. Ignored if <see cref="P:queuepacked.ConsoleUI.ElementList.Horizontal"/> is True
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementList.Padding">
+            <summary>
+            The padding between elements
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ElementList.#ctor(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ElementList"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="horizontal"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ElementList.Reorder">
+            <summary>
+            Arranges this groups elements
+            </summary>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.ElementGrid">
+            <summary>
+            Arranges <see cref="T:queuepacked.ConsoleUI.IElement"/>s in a matrix
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementGrid.Rows">
+            <summary>
+            The amount of rows in this Grid
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementGrid.Columns">
+            <summary>
+            The amount of columns in this Grid
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementGrid.VerticalAlignment">
+            <summary>
+            Vertical alignment of elements
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ElementGrid.HorizontalAlignment">
+            <summary>
+            Horizontal alignment of elements
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ElementGrid.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ElementList"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="columns"></param>
+            <param name="rows"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ElementGrid.Reorder">
+            <summary>
+            Arranges this groups elements
+            </summary>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.UiHub">
+            <summary>
+            Manages a collection of <see cref="T:queuepacked.ConsoleUI.View"/> objects and handles input
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.UiHub.ActiveView">
+            <summary>
+            The currently active View
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.UiHub.Title">
+            <summary>
+            Gets or sets the title of the Console
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.UiHub.Dispose">
+            <summary>
+            Reset the Console settings to what they were when this <see cref="T:queuepacked.ConsoleUI.UiHub"/> was created
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.UiHub.Run">
+            <summary>
+            Continuously reads input and draws changes to the console
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.UiHub.Stop">
+            <summary>
+            Cancels an active call to <see cref="M:queuepacked.ConsoleUI.UiHub.Run"/>
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.UiHub.Register(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Creates a new <see cref="T:queuepacked.ConsoleUI.UiHub"/> at the current position of the cursor
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="adjustWindow"></param>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.UiHub.AddView(System.String)">
+            <summary>
+            Creates a new <see cref="T:queuepacked.ConsoleUI.View"/>
+            </summary>
+            <param name="name">The unique name to identify the new View by</param>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.UiHub.SwitchView(System.String)">
+            <summary>
+            Switches to a different view
+            </summary>
+            <param name="name">The name of the View to switch to</param>
+            <returns></returns>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.View">
+            <summary>
+            Represents a single arrangement of UI elements tied directly to an area in the Console
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.View.Name">
+            <summary>
+            The name of this <see cref="T:queuepacked.ConsoleUI.View"/>
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.View.#ctor(System.String,System.Int32,System.Int32,System.Int32,queuepacked.ConsoleUI.Symbol)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.View"/>
+            </summary>
+            <param name="name">The name to reference this view with</param>
+            <param name="top">The top position of this <see cref="T:queuepacked.ConsoleUI.View"/> in the console</param>
+            <param name="width">The total width this view should have.</param>
+            <param name="height">The total height this view should have</param>
+            <param name="clearance">The filler character used to clear this view</param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.View.AddElement``1(``0)">
+            <summary>
+            Adds a <see cref="T:queuepacked.ConsoleUI.ViewElement"/> to this View
+            </summary>
+            <param name="element"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+            <exception cref="T:System.ArgumentException"></exception>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.View.AddElements(queuepacked.ConsoleUI.ViewElement[])">
+            <summary>
+            Adds several <see cref="T:queuepacked.ConsoleUI.ViewElement"/>s to this View
+            </summary>
+            <param name="elements"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.View.Redraw">
+            <summary>
+            Draws the current elements to the buffer and triggers a <see cref="M:queuepacked.ConsoleUI.View.Refresh(System.Boolean)"/>
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.View.Refresh(System.Boolean)">
+            <summary>
+            Draws the buffer to the console
+            </summary>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.ViewElement">
+            <summary>
+            Base of all view objects
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElement.X">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.IElement.X"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElement.Y">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.IElement.Y"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElement.Width">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.IElement.Width"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElement.Height">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.IElement.Height"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElement.BackgroundColor">
+            <summary>
+            Gets or sets this elements Background color
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElement.ForegroundColor">
+            <summary>
+            Gets or sets this elements Foreground color
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElement.Visible">
+            <summary>
+            Whether or not to show this element
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElement.Dirty">
+            <summary>
+            Whether or not this element had changes that require it to be redrawn
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElement.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElement"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElement.PropertyChanged(System.String)">
+            <summary>
+            Marks this element as needing a redraw
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElement.OnDraw(queuepacked.ConsoleUI.Buffer)">
+            <summary>
+            Called when this element is drawn on it's Views Buffer
+            </summary>
+            <param name="buffer"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElement.OnPropertyChanged(System.String)">
+            <summary>
+            Called whenever this element is changed
+            </summary>
+            <param name="callerMember">The property that was changed</param>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.InteractiveViewElement">
+            <summary>
+            A type of <see cref="T:queuepacked.ConsoleUI.ViewElement"/> which can be interacted with
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.Enabled">
+            <summary>
+            Whether or not this element can be selected with
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.Selected">
+            <summary>
+            Whether or not this element is currently selected
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.BackgroundColorSelected">
+            <summary>
+            Gets or sets this elements Background color
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.ForegroundColorSelected">
+            <summary>
+            Gets or sets this elements Foreground color
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.Tabindex">
+            <summary>
+            A number used in relation to other elements to determine the tab order
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.InteractiveViewElement.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.InteractiveViewElement"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.ITextElement">
+            <summary>
+            Marks an element as having Text content to display
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ITextElement.Text">
+            <summary>
+            Gets or sets the Text displayed in this element
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentHorizontal">
+            <summary>
+            Gets or sets the horizontal arrangement of text in this element
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentVertical">
+            <summary>
+            Gets or sets the vertical arrangement of text in this element
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ITextElement.Filler">
+            <summary>
+            Gets or sets the Filler used to pad the text
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ITextElement.WrapText">
+            <summary>
+            Whether or not text should continue in a new line if the element isn't wide enough
+            </summary>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.TextElementHelper">
+            <summary>
+            Methods to help format text for TextElements
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.TextElementHelper.GenerateTextPattern``1(``0)">
+            <summary>
+            Generates a pattern based on an elements properties
+            </summary>
+            <param name="element"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.TextElementHelper.GenerateTextPattern``1(``0,System.String)">
+            <summary>
+            Generates a pattern based on an elements properties
+            </summary>
+            <param name="element"></param>
+            <param name="text">The text to use in place of the elements own Text property</param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.ViewElements.Button">
+            <summary>
+            An interactive element that can trigger actions
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Button.Text">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.Text"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Button.TextAlignmentHorizontal">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentHorizontal"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Button.TextAlignmentVertical">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentVertical"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Button.Filler">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.Filler"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Button.WrapText">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.WrapText"/>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Button.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElements.Button"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Button.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElements.Button"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="text"></param>
+        </member>
+        <member name="E:queuepacked.ConsoleUI.ViewElements.Button.Pressed">
+            <summary>
+            Triggered when this Button is triggered
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Button.OnDraw(queuepacked.ConsoleUI.Buffer)">
+            <inheritdoc cref="M:queuepacked.ConsoleUI.ViewElement.OnDraw(queuepacked.ConsoleUI.Buffer)"/>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Button.OnPropertyChanged(System.String)">
+            <inheritdoc cref="M:queuepacked.ConsoleUI.ViewElement.OnPropertyChanged(System.String)"/>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.ViewElements.Label">
+            <summary>
+            A simple <see cref="T:queuepacked.ConsoleUI.ViewElement"/> that can display text
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Label.Text">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.Text"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Label.TextAlignmentHorizontal">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentHorizontal"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Label.TextAlignmentVertical">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentVertical"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Label.Filler">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.Filler"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Label.WrapText">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.WrapText"/>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Label.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElements.Label"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Label.#ctor(System.Int32,System.Int32,System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElements.Label"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Label.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElements.Label"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="text"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Label.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.String,queuepacked.ConsoleUI.AlignmentHorizontal,queuepacked.ConsoleUI.AlignmentVertical)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElements.Label"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="text"></param>
+            <param name="textAlignmentHorizontal"></param>
+            <param name="textAlignmentVertical"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Label.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.String,queuepacked.ConsoleUI.AlignmentHorizontal,queuepacked.ConsoleUI.AlignmentVertical,System.Boolean)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElements.Label"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="text"></param>
+            <param name="textAlignmentHorizontal"></param>
+            <param name="textAlignmentVertical"></param>
+            <param name="wrapText"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Label.OnDraw(queuepacked.ConsoleUI.Buffer)">
+            <inheritdoc cref="M:queuepacked.ConsoleUI.ViewElement.OnDraw(queuepacked.ConsoleUI.Buffer)"/>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Label.OnPropertyChanged(System.String)">
+            <inheritdoc cref="M:queuepacked.ConsoleUI.ViewElement.OnPropertyChanged(System.String)"/>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.ViewElements.Rectangle">
+            <summary>
+            A simple rectangle
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Rectangle.Thickness">
+            <summary>
+            The thickness of the rect, or 0 to fill it completely
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.Rectangle.Filler">
+            <summary>
+            The character to use to fill this rectangle with
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Rectangle.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElements.Rectangle"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Rectangle.#ctor(System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElements.Rectangle"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="thickness"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Rectangle.OnDraw(queuepacked.ConsoleUI.Buffer)">
+            <inheritdoc cref="M:queuepacked.ConsoleUI.ViewElement.OnDraw(queuepacked.ConsoleUI.Buffer)"/>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.Rectangle.OnPropertyChanged(System.String)">
+            <inheritdoc cref="M:queuepacked.ConsoleUI.ViewElement.OnPropertyChanged(System.String)"/>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.ViewElements.RotoList`1">
+            <summary>
+            An interactive element that can trigger actions
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.RotoList`1.Text">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.Text"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.RotoList`1.TextAlignmentHorizontal">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentHorizontal"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.RotoList`1.TextAlignmentVertical">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentVertical"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.RotoList`1.Filler">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.Filler"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.RotoList`1.WrapText">
+            <inheritdoc cref="P:queuepacked.ConsoleUI.ITextElement.WrapText"/>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.RotoList`1.Border">
+            <summary>
+            Whether or not to render a border around ths button
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.RotoList`1.CurrentElement">
+            <summary>
+            The currently selected <see cref="T:queuepacked.ConsoleUI.ViewElements.RotoList`1.Element`1"/>
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.RotoList`1.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElements.RotoList`1"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="E:queuepacked.ConsoleUI.ViewElements.RotoList`1.ChangedElement">
+            <summary>
+            Triggered when this RotoList is triggered
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.RotoList`1.SetElements(System.Collections.Generic.IEnumerable{queuepacked.ConsoleUI.ViewElements.RotoList{`0}.Element{`0}})">
+            <summary>
+            Sets the list of elements
+            </summary>
+            <param name="elements"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.RotoList`1.OnDraw(queuepacked.ConsoleUI.Buffer)">
+            <inheritdoc cref="M:queuepacked.ConsoleUI.ViewElement.OnDraw(queuepacked.ConsoleUI.Buffer)"/>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.RotoList`1.OnPropertyChanged(System.String)">
+            <inheritdoc cref="M:queuepacked.ConsoleUI.ViewElement.OnPropertyChanged(System.String)"/>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.ViewElements.RotoList`1.Element`1">
+            <summary>
+            A single value in a <see cref="T:queuepacked.ConsoleUI.ViewElements.RotoList`1"/>
+            </summary>
+            <typeparam name="TE"></typeparam>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.RotoList`1.Element`1.Value">
+            <summary>
+            The value stored in this element
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ViewElements.RotoList`1.Element`1.Name">
+            <summary>
+            The name used to display in the console
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.ViewElements.RotoList`1.Element`1.#ctor(System.String,`1)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.ViewElements.RotoList`1.Element`1"/>
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+        </member>
+    </members>
+</doc>

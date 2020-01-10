@@ -118,7 +118,7 @@ namespace queuepacked.ConsoleUI.ViewElements
         /// <summary>
         /// The currently selected <see cref="Element{T}"/>
         /// </summary>
-        public Element<T> CurrentElement => _currentIndex < 0 ? null : _elements[_currentIndex];
+        public Element<T> CurrentElement => _elements[_currentIndex];
 
         /// <summary>
         /// Creates a new instance of <see cref="RotoList{T}"/>
@@ -134,6 +134,7 @@ namespace queuepacked.ConsoleUI.ViewElements
             _textAlignmentVertical = AlignmentVertical.Middle;
             _wrapText = true;
             _filler = ' ';
+            _pattern = Pattern.Builder.New(width, height).Create();
 
             _elements = new List<Element<T>>();
             _currentIndex = -1;
@@ -144,7 +145,7 @@ namespace queuepacked.ConsoleUI.ViewElements
         /// <summary>
         /// Triggered when this RotoList is triggered
         /// </summary>
-        public event Action<Element<T>> ChangedElement;
+        public event Action<Element<T>>? ChangedElement;
 
         /// <summary>
         /// Sets the list of elements
