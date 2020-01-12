@@ -170,6 +170,13 @@ namespace queuepacked.ConsoleUI
     /// </summary>
     public class Pattern
     {
+        public static readonly Pattern Empty;
+
+        static Pattern()
+        {
+            Empty = new Pattern(0, 0);
+        }
+
         private readonly Symbol[,] _symbols;
 
         /// <summary>

@@ -67,7 +67,7 @@
         {
             _thickness = thickness < 0 ? 0 : thickness;
             _filler = Buffer.Invisible;
-            _pattern = Pattern.Builder.New(width, height).Create();
+            _pattern = Pattern.Empty;
             UpdatePattern();
         }
 

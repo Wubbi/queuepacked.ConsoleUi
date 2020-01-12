@@ -118,8 +118,8 @@ namespace queuepacked.ConsoleUI.ViewElements
             _textAlignmentVertical = AlignmentVertical.Middle;
             _wrapText = true;
             _filler = ' ';
-            _pattern = Pattern.Builder.New(width, height).Create();
-            
+            _pattern = Pattern.Empty;
+
             UpdatePattern();
         }
 

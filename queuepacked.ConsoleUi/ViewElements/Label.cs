@@ -157,7 +157,7 @@
             _textAlignmentVertical = textAlignmentVertical;
             _wrapText = wrapText;
             _filler = ' ';
-            _pattern = Pattern.Builder.New(width, height).Create();
+            _pattern = Pattern.Empty;
             UpdatePattern();
         }
 
