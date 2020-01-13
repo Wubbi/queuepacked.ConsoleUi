@@ -287,6 +287,75 @@
             Gets or sets the Height of this element
             </summary>
         </member>
+        <member name="T:queuepacked.ConsoleUI.InteractiveViewElement">
+            <summary>
+            A type of <see cref="T:queuepacked.ConsoleUI.ViewElement"/> which can be interacted with
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.Enabled">
+            <summary>
+            Whether or not this element can be selected with
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.Selected">
+            <summary>
+            Whether or not this element is currently selected
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.BackgroundColorSelected">
+            <summary>
+            Gets or sets this elements Background color
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.ForegroundColorSelected">
+            <summary>
+            Gets or sets this elements Foreground color
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.Tabindex">
+            <summary>
+            A number used in relation to other elements to determine the tab order
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.InteractiveViewElement.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.InteractiveViewElement"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.ITextElement">
+            <summary>
+            Marks an element as having Text content to display
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ITextElement.Text">
+            <summary>
+            Gets or sets the Text displayed in this element
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentHorizontal">
+            <summary>
+            Gets or sets the horizontal arrangement of text in this element
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentVertical">
+            <summary>
+            Gets or sets the vertical arrangement of text in this element
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ITextElement.Filler">
+            <summary>
+            Gets or sets the Filler used to pad the text
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.ITextElement.WrapText">
+            <summary>
+            Whether or not text should continue in a new line if the element isn't wide enough
+            </summary>
+        </member>
         <member name="T:queuepacked.ConsoleUI.ElementList">
             <summary>
             Arranges <see cref="T:queuepacked.ConsoleUI.IElement"/>s in a vertical or horizontal line
@@ -364,9 +433,36 @@
             Arranges this groups elements
             </summary>
         </member>
+        <member name="T:queuepacked.ConsoleUI.TextElementHelper">
+            <summary>
+            Methods to help format text for TextElements
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.TextElementHelper.GenerateTextPattern``1(``0)">
+            <summary>
+            Generates a pattern based on an elements properties
+            </summary>
+            <param name="element"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.TextElementHelper.GenerateTextPattern``1(``0,System.String)">
+            <summary>
+            Generates a pattern based on an elements properties
+            </summary>
+            <param name="element"></param>
+            <param name="text">The text to use in place of the elements own Text property</param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
         <member name="T:queuepacked.ConsoleUI.UiHub">
             <summary>
             Manages a collection of <see cref="T:queuepacked.ConsoleUI.View"/> objects and handles input
+            </summary>
+        </member>
+        <member name="E:queuepacked.ConsoleUI.UiHub.HubStops">
+            <summary>
+            Triggers when a running <see cref="T:queuepacked.ConsoleUI.UiHub"/> stops
             </summary>
         </member>
         <member name="P:queuepacked.ConsoleUI.UiHub.ActiveView">
@@ -416,6 +512,28 @@
             </summary>
             <param name="name">The name of the View to switch to</param>
             <returns></returns>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.HubStopsEventHandler">
+            <summary>
+            Handles the stopping event of a <see cref="T:queuepacked.ConsoleUI.UiHub"/>
+            </summary>
+            <param name="sender"></param>
+            <param name="eventArgs"></param>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.HubStopsEventArgs">
+            <summary>
+            Contains properties detailing a shutdown of a <see cref="T:queuepacked.ConsoleUI.UiHub"/>
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.HubStopsEventArgs.Stop">
+            <summary>
+            Whether or not the UiHub should proceed with stopping. If set to false a stop event is ignored
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.HubStopsEventArgs.#ctor">
+            <summary>
+            Creates a new instance
+            </summary>
         </member>
         <member name="T:queuepacked.ConsoleUI.View">
             <summary>
@@ -524,97 +642,6 @@
             Called whenever this element is changed
             </summary>
             <param name="callerMember">The property that was changed</param>
-        </member>
-        <member name="T:queuepacked.ConsoleUI.InteractiveViewElement">
-            <summary>
-            A type of <see cref="T:queuepacked.ConsoleUI.ViewElement"/> which can be interacted with
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.Enabled">
-            <summary>
-            Whether or not this element can be selected with
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.Selected">
-            <summary>
-            Whether or not this element is currently selected
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.BackgroundColorSelected">
-            <summary>
-            Gets or sets this elements Background color
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.ForegroundColorSelected">
-            <summary>
-            Gets or sets this elements Foreground color
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.InteractiveViewElement.Tabindex">
-            <summary>
-            A number used in relation to other elements to determine the tab order
-            </summary>
-        </member>
-        <member name="M:queuepacked.ConsoleUI.InteractiveViewElement.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            Creates a new instance of <see cref="T:queuepacked.ConsoleUI.InteractiveViewElement"/>
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="width"></param>
-            <param name="height"></param>
-        </member>
-        <member name="T:queuepacked.ConsoleUI.ITextElement">
-            <summary>
-            Marks an element as having Text content to display
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.ITextElement.Text">
-            <summary>
-            Gets or sets the Text displayed in this element
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentHorizontal">
-            <summary>
-            Gets or sets the horizontal arrangement of text in this element
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.ITextElement.TextAlignmentVertical">
-            <summary>
-            Gets or sets the vertical arrangement of text in this element
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.ITextElement.Filler">
-            <summary>
-            Gets or sets the Filler used to pad the text
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.ITextElement.WrapText">
-            <summary>
-            Whether or not text should continue in a new line if the element isn't wide enough
-            </summary>
-        </member>
-        <member name="T:queuepacked.ConsoleUI.TextElementHelper">
-            <summary>
-            Methods to help format text for TextElements
-            </summary>
-        </member>
-        <member name="M:queuepacked.ConsoleUI.TextElementHelper.GenerateTextPattern``1(``0)">
-            <summary>
-            Generates a pattern based on an elements properties
-            </summary>
-            <param name="element"></param>
-            <typeparam name="T"></typeparam>
-            <returns></returns>
-        </member>
-        <member name="M:queuepacked.ConsoleUI.TextElementHelper.GenerateTextPattern``1(``0,System.String)">
-            <summary>
-            Generates a pattern based on an elements properties
-            </summary>
-            <param name="element"></param>
-            <param name="text">The text to use in place of the elements own Text property</param>
-            <typeparam name="T"></typeparam>
-            <returns></returns>
         </member>
         <member name="T:queuepacked.ConsoleUI.ViewElements.Button">
             <summary>

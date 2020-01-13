@@ -28,6 +28,11 @@ namespace queuepacked.ConsoleUI
         private readonly InputCatcher _inputCatcher;
 
         /// <summary>
+        /// Triggers when a running <see cref="UiHub"/> stops
+        /// </summary>
+        public event HubStopsEventHandler? HubStops;
+
+        /// <summary>
         /// The currently active View
         /// </summary>
         public View? ActiveView
@@ -153,7 +158,12 @@ namespace queuepacked.ConsoleUI
                     ActiveView?.OnNewInput(inputEvent);
 
                     if (!inputEvent.ConsumedInput && inputEvent.KeyInfo.Key == ConsoleKey.C && inputEvent.KeyInfo.Modifiers == ConsoleModifiers.Control)
-                        Stop();
+                    {
+                        HubStopsEventArgs eventArgs = new HubStopsEventArgs();
+                        HubStops?.Invoke(this, eventArgs);
+                        if (eventArgs.Stop)
+                            Stop();
+                    }
                 }
 
                 ActiveView?.DrawBuffer();
@@ -181,7 +191,7 @@ namespace queuepacked.ConsoleUI
         public static UiHub Register(int width, int height, bool adjustWindow)
         {
             if (!(_instance is null))
-                throw new Exception("A previous ViewSwitch instance was not disposed yet");
+                throw new Exception("A previous UiHub instance was not yet disposed of");
 
             if (width < 0)
                 throw new ArgumentOutOfRangeException(nameof(width));
@@ -242,6 +252,32 @@ namespace queuepacked.ConsoleUI
             ActiveView.Refresh(true);
 
             return ActiveView;
+        }
+    }
+
+    /// <summary>
+    /// Handles the stopping event of a <see cref="UiHub"/>
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="eventArgs"></param>
+    public delegate void HubStopsEventHandler(UiHub sender, HubStopsEventArgs eventArgs);
+
+    /// <summary>
+    /// Contains properties detailing a shutdown of a <see cref="UiHub"/>
+    /// </summary>
+    public class HubStopsEventArgs : EventArgs
+    {
+        /// <summary>
+        /// Whether or not the UiHub should proceed with stopping. If set to false a stop event is ignored
+        /// </summary>
+        public bool Stop { get; set; }
+
+        /// <summary>
+        /// Creates a new instance
+        /// </summary>
+        internal HubStopsEventArgs()
+        {
+            Stop = true;
         }
     }
 }
