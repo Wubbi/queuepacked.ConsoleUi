@@ -26,6 +26,9 @@ namespace queuepacked.ConsoleUI
         private View? _activeView;
 
         private readonly InputCatcher _inputCatcher;
+        private int _mainLoopInterval;
+        private int _viewUpdateReduction;
+        private int _viewUpdateReductionCounter;
 
         /// <summary>
         /// Triggers when a running <see cref="UiHub"/> stops
@@ -60,6 +63,42 @@ namespace queuepacked.ConsoleUI
 
                 _title = value;
                 Console.Title = value;
+            }
+        }
+
+        /// <summary>
+        /// Time in milliseconds the main loop waits for new inputs
+        /// </summary>
+        public int MainLoopInterval
+        {
+            get => _mainLoopInterval;
+            set
+            {
+                if (_disposed)
+                    throw new ObjectDisposedException(ToString());
+
+                if (value < 10)
+                    value = 10;
+
+                _mainLoopInterval = value;
+            }
+        }
+
+        /// <summary>
+        /// The amount of cycles of the main loop until the view is updated
+        /// </summary>
+        public int ViewUpdateReduction
+        {
+            get => _viewUpdateReduction;
+            set
+            {
+                if (_disposed)
+                    throw new ObjectDisposedException(ToString());
+
+                if (value < 1)
+                    value = 1;
+
+                _viewUpdateReduction = value;
             }
         }
 
@@ -119,6 +158,10 @@ namespace queuepacked.ConsoleUI
             _inputCatcher.SetInput(InputType.Right
                 , new KeyModifierCombo(ConsoleKey.RightArrow, 0)
             );
+
+            _mainLoopInterval = 15;
+            _viewUpdateReduction = 1;
+            _viewUpdateReductionCounter = 0;
         }
 
         /// <summary>
@@ -151,7 +194,7 @@ namespace queuepacked.ConsoleUI
 
             while (_running)
             {
-                Thread.Sleep(15);
+                Thread.Sleep(_mainLoopInterval);
 
                 while (_inputCatcher.KeyPressed(out InputEventArgs inputEvent))
                 {
@@ -165,6 +208,12 @@ namespace queuepacked.ConsoleUI
                             Stop();
                     }
                 }
+
+                ++_viewUpdateReductionCounter;
+                if (_viewUpdateReductionCounter < _viewUpdateReduction)
+                    continue;
+
+                _viewUpdateReductionCounter = 0;
 
                 ActiveView?.DrawBuffer();
             }

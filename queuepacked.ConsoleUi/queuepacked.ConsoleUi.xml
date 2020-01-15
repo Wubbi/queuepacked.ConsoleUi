@@ -475,6 +475,16 @@
             Gets or sets the title of the Console
             </summary>
         </member>
+        <member name="P:queuepacked.ConsoleUI.UiHub.MainLoopInterval">
+            <summary>
+            Time in milliseconds the main loop waits for new inputs
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.UiHub.ViewUpdateReduction">
+            <summary>
+            The amount of cycles of the main loop until the view is updated
+            </summary>
+        </member>
         <member name="M:queuepacked.ConsoleUI.UiHub.Dispose">
             <summary>
             Reset the Console settings to what they were when this <see cref="T:queuepacked.ConsoleUI.UiHub"/> was created

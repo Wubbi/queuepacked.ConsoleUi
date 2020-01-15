@@ -8,8 +8,8 @@
     <Description>A library for "drawing" simple UI inside a console window</Description>
     <Copyright>Copyright 2020</Copyright>
     <PackageTags>console ui</PackageTags>
-    <AssemblyVersion>1.2.1.0</AssemblyVersion>
-    <Version>1.2.1</Version>
+    <AssemblyVersion>1.3.0.0</AssemblyVersion>
+    <Version>1.3.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
