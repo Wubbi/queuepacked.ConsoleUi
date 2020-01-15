@@ -73,6 +73,12 @@
 
         private void UpdatePattern()
         {
+            if (Width <= 0 || Height <= 0)
+            {
+                _pattern = Pattern.Empty;
+                return;
+            }
+
             Pattern.Builder builder = Pattern.Builder.New(Width, Height);
 
             builder.Rect(0, 0, Width, Height, new Symbol(Filler, BackgroundColor, ForegroundColor));

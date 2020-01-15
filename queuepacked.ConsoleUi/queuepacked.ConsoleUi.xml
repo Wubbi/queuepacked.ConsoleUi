@@ -147,121 +147,6 @@
             </summary>
             <param name="filler"></param>
         </member>
-        <member name="T:queuepacked.ConsoleUI.Pattern">
-            <summary>
-            A collection of Symbols arranged in a rectangle
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.Pattern.Width">
-            <summary>
-            The Width of this pattern
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.Pattern.Height">
-            <summary>
-            The Height of this pattern
-            </summary>
-        </member>
-        <member name="P:queuepacked.ConsoleUI.Pattern.Item(System.Int32,System.Int32)">
-            <summary>
-            Returns the <see cref="T:queuepacked.ConsoleUI.Symbol"/> at the given coordinates in this <see cref="T:queuepacked.ConsoleUI.Pattern"/>
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <returns></returns>
-        </member>
-        <member name="M:queuepacked.ConsoleUI.Pattern.Clone">
-            <summary>
-            Creates a depp copy of this <see cref="T:queuepacked.ConsoleUI.Pattern"/>
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:queuepacked.ConsoleUI.Pattern.Builder">
-            <summary>
-            A helper class to create instances of <see cref="T:queuepacked.ConsoleUI.Pattern"/>
-            </summary>
-        </member>
-        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.New(System.Int32,System.Int32)">
-            <summary>
-            Creates a new Builder
-            </summary>
-            <param name="width"></param>
-            <param name="height"></param>
-            <returns></returns>
-        </member>
-        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.AddSymbols(System.Int32,System.Int32,queuepacked.ConsoleUI.Symbol[])">
-            <summary>
-            Write one or more Symbols in a row from left to right to this patterns starting at the given coordinates
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="symbols"></param>
-            <returns></returns>
-            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
-        </member>
-        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.AddText(System.Int32,System.Int32,System.String,System.ConsoleColor,System.ConsoleColor)">
-            <summary>
-            Write a string with the given colors into this pattern
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="text"></param>
-            <param name="backgroundColor"></param>
-            <param name="foregroundColor"></param>
-            <returns></returns>
-        </member>
-        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.Rect(System.Int32,System.Int32,System.Int32,System.Int32,queuepacked.ConsoleUI.Symbol)">
-            <summary>
-            Draws a full rect
-            </summary>
-            <param name="x"></param>
-            <param name="y"></param>
-            <param name="width"></param>
-            <param name="height"></param>
-            <param name="filler"></param>
-            <returns></returns>
-        </member>
-        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.Create">
-            <summary>
-            Creates a new <see cref="T:queuepacked.ConsoleUI.Pattern"/> using the current state of this <see cref="T:queuepacked.ConsoleUI.Pattern.Builder"/>
-            </summary>
-            <returns></returns>
-        </member>
-        <member name="T:queuepacked.ConsoleUI.Symbol">
-            <summary>
-            A single character to display in the console
-            </summary>
-        </member>
-        <member name="F:queuepacked.ConsoleUI.Symbol.Character">
-            <summary>
-            The character to display
-            </summary>
-        </member>
-        <member name="F:queuepacked.ConsoleUI.Symbol.BackgroundColor">
-            <summary>
-            The background color to use for this Symbol
-            </summary>
-        </member>
-        <member name="F:queuepacked.ConsoleUI.Symbol.ForegroundColor">
-            <summary>
-            The foreground color to use for this Symbol
-            </summary>
-        </member>
-        <member name="M:queuepacked.ConsoleUI.Symbol.#ctor(System.Char,System.ConsoleColor,System.ConsoleColor)">
-            <summary>
-            Creates a new Symbol using the given values
-            </summary>
-            <param name="character"></param>
-            <param name="backgroundColor"></param>
-            <param name="foregroundColor"></param>
-        </member>
-        <member name="M:queuepacked.ConsoleUI.Symbol.Equals(queuepacked.ConsoleUI.Symbol@)">
-            <summary>
-            Compares this <see cref="T:queuepacked.ConsoleUI.Symbol"/> to another
-            </summary>
-            <param name="other"></param>
-            <returns></returns>
-        </member>
         <member name="T:queuepacked.ConsoleUI.IElement">
             <summary>
             Offers basic properties for arranging elements in a layout
@@ -432,6 +317,121 @@
             <summary>
             Arranges this groups elements
             </summary>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.Pattern">
+            <summary>
+            A collection of Symbols arranged in a rectangle
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.Pattern.Width">
+            <summary>
+            The Width of this pattern
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.Pattern.Height">
+            <summary>
+            The Height of this pattern
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.Pattern.Item(System.Int32,System.Int32)">
+            <summary>
+            Returns the <see cref="T:queuepacked.ConsoleUI.Symbol"/> at the given coordinates in this <see cref="T:queuepacked.ConsoleUI.Pattern"/>
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Clone">
+            <summary>
+            Creates a depp copy of this <see cref="T:queuepacked.ConsoleUI.Pattern"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.Pattern.Builder">
+            <summary>
+            A helper class to create instances of <see cref="T:queuepacked.ConsoleUI.Pattern"/>
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.New(System.Int32,System.Int32)">
+            <summary>
+            Creates a new Builder
+            </summary>
+            <param name="width"></param>
+            <param name="height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.AddSymbols(System.Int32,System.Int32,queuepacked.ConsoleUI.Symbol[])">
+            <summary>
+            Write one or more Symbols in a row from left to right to this patterns starting at the given coordinates
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="symbols"></param>
+            <returns></returns>
+            <exception cref="T:System.ArgumentOutOfRangeException"></exception>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.AddText(System.Int32,System.Int32,System.String,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            Write a string with the given colors into this pattern
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="text"></param>
+            <param name="backgroundColor"></param>
+            <param name="foregroundColor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.Rect(System.Int32,System.Int32,System.Int32,System.Int32,queuepacked.ConsoleUI.Symbol)">
+            <summary>
+            Draws a full rect
+            </summary>
+            <param name="x"></param>
+            <param name="y"></param>
+            <param name="width"></param>
+            <param name="height"></param>
+            <param name="filler"></param>
+            <returns></returns>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Pattern.Builder.Create">
+            <summary>
+            Creates a new <see cref="T:queuepacked.ConsoleUI.Pattern"/> using the current state of this <see cref="T:queuepacked.ConsoleUI.Pattern.Builder"/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.Symbol">
+            <summary>
+            A single character to display in the console
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.Symbol.Character">
+            <summary>
+            The character to display
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.Symbol.BackgroundColor">
+            <summary>
+            The background color to use for this Symbol
+            </summary>
+        </member>
+        <member name="F:queuepacked.ConsoleUI.Symbol.ForegroundColor">
+            <summary>
+            The foreground color to use for this Symbol
+            </summary>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Symbol.#ctor(System.Char,System.ConsoleColor,System.ConsoleColor)">
+            <summary>
+            Creates a new Symbol using the given values
+            </summary>
+            <param name="character"></param>
+            <param name="backgroundColor"></param>
+            <param name="foregroundColor"></param>
+        </member>
+        <member name="M:queuepacked.ConsoleUI.Symbol.Equals(queuepacked.ConsoleUI.Symbol@)">
+            <summary>
+            Compares this <see cref="T:queuepacked.ConsoleUI.Symbol"/> to another
+            </summary>
+            <param name="other"></param>
+            <returns></returns>
         </member>
         <member name="T:queuepacked.ConsoleUI.TextElementHelper">
             <summary>

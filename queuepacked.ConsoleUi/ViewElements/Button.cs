@@ -156,6 +156,12 @@ namespace queuepacked.ConsoleUI.ViewElements
         {
             string[] generateTextPattern = TextElementHelper.GenerateTextPattern(this);
 
+            if (Width <= 0 || Height <= 0)
+            {
+                _pattern=Pattern.Empty;
+                return;
+            }
+
             Pattern.Builder builder = Pattern.Builder.New(Width, Height);
 
             for (int i = 0; i < Height; ++i)
