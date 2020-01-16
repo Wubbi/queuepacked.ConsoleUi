@@ -9,6 +9,13 @@ namespace queuepacked.ConsoleUI
     /// </summary>
     public class UiHub : IDisposable
     {
+        internal static readonly bool IsWindows;
+
+        static UiHub()
+        {
+            IsWindows = Environment.OSVersion.Platform == PlatformID.Win32NT;
+        }
+
         private static UiHub? _instance;
 
         private readonly ConsoleSettings _initialSettings;
@@ -106,23 +113,28 @@ namespace queuepacked.ConsoleUI
         {
             _initialSettings = new ConsoleSettings();
 
-            _title = Console.Title;
+            _title = "";
 
-            Console.CursorVisible = false;
-
-            if (Console.BufferWidth < width)
-                Console.BufferWidth = width;
-
-            if (Console.BufferHeight < height)
-                Console.BufferHeight = height;
-
-            if (adjustWindow)
+            if (IsWindows)
             {
-                if (Console.WindowWidth != width)
-                    Console.WindowWidth = width;
+                _title = "";
 
-                if (Console.WindowHeight != height)
-                    Console.WindowHeight = height;
+                Console.CursorVisible = false;
+
+                if (Console.BufferWidth < width)
+                    Console.BufferWidth = width;
+
+                if (Console.BufferHeight < height)
+                    Console.BufferHeight = height;
+
+                if (adjustWindow)
+                {
+                    if (Console.WindowWidth != width)
+                        Console.WindowWidth = width;
+
+                    if (Console.WindowHeight != height)
+                        Console.WindowHeight = height;
+                }
             }
 
             Console.TreatControlCAsInput = true;
@@ -159,8 +171,8 @@ namespace queuepacked.ConsoleUI
                 , new KeyModifierCombo(ConsoleKey.RightArrow, 0)
             );
 
-            _mainLoopInterval = 15;
-            _viewUpdateReduction = 1;
+            _mainLoopInterval = 30;
+            _viewUpdateReduction = 2;
             _viewUpdateReductionCounter = 0;
         }
 
@@ -176,8 +188,7 @@ namespace queuepacked.ConsoleUI
 
             _initialSettings.Set();
 
-            Console.CursorTop = _initialSettings.CursorTop + _height;
-            Console.CursorLeft = 0;
+            Console.SetCursorPosition(0, _initialSettings.CursorTop + _height);
 
             _instance = null;
         }

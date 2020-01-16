@@ -29,16 +29,21 @@ namespace queuepacked.ConsoleUI
         /// </summary>
         internal ConsoleSettings()
         {
-            CursorSize = Console.CursorSize;
             BackgroundColor = Console.BackgroundColor;
             ForegroundColor = Console.ForegroundColor;
-            CursorVisible = Console.CursorVisible;
             CursorLeft = Console.CursorLeft;
             CursorTop = Console.CursorTop;
-            Title = Console.Title;
             TreatControlCAsInput = Console.TreatControlCAsInput;
+            Title = "";
+
+            if (!UiHub.IsWindows)
+                return;
+
             WindowWidth = Console.WindowWidth;
             WindowHeight = Console.WindowHeight;
+            Title = Console.Title;
+            CursorSize = Console.CursorSize;
+            CursorVisible = Console.CursorVisible;
         }
 
         /// <summary>
@@ -46,14 +51,17 @@ namespace queuepacked.ConsoleUI
         /// </summary>
         internal void Set()
         {
-            Console.CursorSize = CursorSize;
             Console.BackgroundColor = BackgroundColor;
             Console.ForegroundColor = ForegroundColor;
-            Console.CursorVisible = CursorVisible;
-            Console.CursorLeft = CursorLeft;
-            Console.CursorTop = CursorTop;
+            Console.SetCursorPosition(CursorLeft, CursorTop);
             Console.Title = Title;
             Console.TreatControlCAsInput = TreatControlCAsInput;
+            Console.CursorVisible = CursorVisible;
+
+            if (!UiHub.IsWindows)
+                return;
+
+            Console.CursorSize = CursorSize;
             Console.WindowWidth = WindowWidth;
             Console.WindowHeight = WindowHeight;
         }
