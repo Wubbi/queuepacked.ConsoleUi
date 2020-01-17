@@ -69,7 +69,9 @@ namespace queuepacked.ConsoleUI
                     throw new ObjectDisposedException(ToString());
 
                 _title = value;
-                Console.Title = value;
+
+                if (IsWindows)
+                    Console.Title = value;
             }
         }
 

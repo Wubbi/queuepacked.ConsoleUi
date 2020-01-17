@@ -54,13 +54,13 @@ namespace queuepacked.ConsoleUI
             Console.BackgroundColor = BackgroundColor;
             Console.ForegroundColor = ForegroundColor;
             Console.SetCursorPosition(CursorLeft, CursorTop);
-            Console.Title = Title;
             Console.TreatControlCAsInput = TreatControlCAsInput;
-            Console.CursorVisible = CursorVisible;
 
             if (!UiHub.IsWindows)
                 return;
 
+            Console.Title = Title;
+            Console.CursorVisible = CursorVisible;
             Console.CursorSize = CursorSize;
             Console.WindowWidth = WindowWidth;
             Console.WindowHeight = WindowHeight;
