@@ -113,6 +113,13 @@ namespace queuepacked.ConsoleUI
 
         private UiHub(int width, int height, bool adjustWindow)
         {
+            string line = new string(' ', width);
+            for (int i = 0; i < height; ++i)
+                Console.WriteLine(line);
+
+            int top = Console.CursorTop - height;
+            Console.SetCursorPosition(0, top < 0 ? 0 : top);
+
             _initialSettings = new ConsoleSettings();
 
             _title = "";
