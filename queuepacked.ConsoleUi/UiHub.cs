@@ -43,6 +43,11 @@ namespace queuepacked.ConsoleUI
         public event HubStopsEventHandler? HubStops;
 
         /// <summary>
+        /// Triggers whenever an input was detected, but not consumed by this <see cref="UiHub"/> itself
+        /// </summary>
+        public event UnhandledKeyPressEventHandler? UnhandledKeyPress;
+
+        /// <summary>
         /// The currently active View
         /// </summary>
         public View? ActiveView
@@ -222,11 +227,15 @@ namespace queuepacked.ConsoleUI
 
                     if (!inputEvent.ConsumedInput && inputEvent.KeyInfo.Key == ConsoleKey.C && inputEvent.KeyInfo.Modifiers == ConsoleModifiers.Control)
                     {
+                        inputEvent.ConsumedInput = true;
                         HubStopsEventArgs eventArgs = new HubStopsEventArgs();
                         HubStops?.Invoke(this, eventArgs);
                         if (eventArgs.Stop)
                             Stop();
                     }
+
+                    if (!inputEvent.ConsumedInput)
+                        UnhandledKeyPress?.Invoke(this, new UnhandledKeyPressEventArgs(inputEvent.KeyInfo));
                 }
 
                 ++_viewUpdateReductionCounter;
@@ -347,6 +356,29 @@ namespace queuepacked.ConsoleUI
         internal HubStopsEventArgs()
         {
             Stop = true;
+        }
+    }
+
+    /// <summary>
+    /// Handles key input that wasn't consumed by the <see cref="UiHub"/>
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="eventArgs"></param>
+    public delegate void UnhandledKeyPressEventHandler(UiHub sender, UnhandledKeyPressEventArgs eventArgs);
+
+    /// <summary>
+    /// Contains the <see cref="ConsoleKeyInfo"/> of the detected key input
+    /// </summary>
+    public class UnhandledKeyPressEventArgs : EventArgs
+    {
+        /// <summary>
+        /// The key input that was detected
+        /// </summary>
+        public ConsoleKeyInfo KeyInfo { get; }
+
+        internal UnhandledKeyPressEventArgs(ConsoleKeyInfo keyInfo)
+        {
+            KeyInfo = keyInfo;
         }
     }
 }

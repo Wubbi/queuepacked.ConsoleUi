@@ -465,6 +465,11 @@
             Triggers when a running <see cref="T:queuepacked.ConsoleUI.UiHub"/> stops
             </summary>
         </member>
+        <member name="E:queuepacked.ConsoleUI.UiHub.UnhandledKeyPress">
+            <summary>
+            Triggers whenever an input was detected, but not consumed by this <see cref="T:queuepacked.ConsoleUI.UiHub"/> itself
+            </summary>
+        </member>
         <member name="P:queuepacked.ConsoleUI.UiHub.ActiveView">
             <summary>
             The currently active View
@@ -543,6 +548,23 @@
         <member name="M:queuepacked.ConsoleUI.HubStopsEventArgs.#ctor">
             <summary>
             Creates a new instance
+            </summary>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.UnhandledKeyPressEventHandler">
+            <summary>
+            Handles key input that wasn't consumed by the <see cref="T:queuepacked.ConsoleUI.UiHub"/>
+            </summary>
+            <param name="sender"></param>
+            <param name="eventArgs"></param>
+        </member>
+        <member name="T:queuepacked.ConsoleUI.UnhandledKeyPressEventArgs">
+            <summary>
+            Contains the <see cref="T:System.ConsoleKeyInfo"/> of the detected key input
+            </summary>
+        </member>
+        <member name="P:queuepacked.ConsoleUI.UnhandledKeyPressEventArgs.KeyInfo">
+            <summary>
+            The key input that was detected
             </summary>
         </member>
         <member name="T:queuepacked.ConsoleUI.View">

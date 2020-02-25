@@ -18,6 +18,8 @@ namespace queuepacked.ConsoleUI.Sandbox
             Label b = new Label(0, 0, "World");
             Label c = new Label(0, 0, "!!");
 
+            Label d = new Label(20, 0, 50, 1);
+
             ElementGrid elementGrid = new ElementGrid(60, 2, 2, 2);
 
             Rectangle r1 = new Rectangle(0, 0, 3, 2) { Filler = '#' };
@@ -33,7 +35,7 @@ namespace queuepacked.ConsoleUI.Sandbox
 
             elementList.Reorder();
 
-            mainView.AddElements(a, b, c);
+            mainView.AddElements(a, b, c, d);
             mainView.AddElements(r1, r2, r3, r4);
 
 
@@ -67,7 +69,7 @@ namespace queuepacked.ConsoleUI.Sandbox
 
             mainView.AddElement(rotoList);
 
-
+            uiHub.UnhandledKeyPress += (s, e) => d.Text = $"I: {e.KeyInfo.Modifiers}+{e.KeyInfo.Key}";
 
             uiHub.Run();
         }
